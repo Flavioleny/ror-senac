@@ -1,9 +1,10 @@
 <h1>Lista de Livros</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Titulo</th>
     <th>Ano de Publicação</th>
+    <th>Autor</th>
   </tr>
 
   <% @books.each do |book| %>
@@ -11,6 +12,10 @@
     <td><%= book.title %></td>
     <td><%= book.publication_year %></td>
     <td><%= link_to book.author.name, author_path(book.author.id) %></td>
+    <td><%= link_to "Editar", edit_book_path(book.id), class: 'btn btn-xs btn-primary' %></td>
+    <td><%= link_to "Deletar", book_path(book.id), class: 'btn btn-xs btn-primary', method: :delete, data: {confirm: "Voce realmente deseja apagar este autor?"} %></td>
   </tr>
   <% end %>
 </table>
+
+<%= link_to "Novo Livro", new_book_path, class: "btn btn-primary" %>

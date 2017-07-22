@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   belongs_to :author
 
   validates_presence_of :title, message: "Não pode ser vazio"
-  
+
   #  validates_length_of :title, in: 5..50,  message: "Deve possuir entre 5 a 50 caracteres"
   #  validate :primeira_letra_maiscula
 

@@ -1,0 +1,17 @@
+pt-BR:
+  hello: "Olá"
+  time:
+    formats:
+      default: "%d/%m/%y %h:%M"
+      short: "%d/%m/%y"
+
+  activerecord:
+    attributes:
+      author:
+        name: "Nome"
+        birthdate: "Data de Nascimento"
+
+  # errors:
+  #   messagens:
+  #     blank: "não pode ser vazio"
+  #       taken: "Já existe"
