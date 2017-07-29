@@ -1,5 +1,18 @@
 <h1>Lista de Autores</h1>
 
+<%= form_tag authors_path, method: :get do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Pesquisar" %>
+<% end %>
+
+<% if params[:search].present? %>
+  <div class="row">
+    <div class="alert alert-success">
+      <%= @authors.size %> Resultados Encontrados.
+    </div>
+</div>
+<% end %>
+
 <% if flash[:notice] %>
 <div class="alert alert-success">
   <%= flash[:notice] %>
@@ -8,7 +21,7 @@
 
 <table class="table table-striped">
   <tr>
-    <th>#</th>
+    <th>Id</th>
     <th>Nome</th>
     <th>Data de Nascimento</th>
     <th>Ações</th>
@@ -24,9 +37,5 @@
   </tr>
   <% end %>
 </table>
-
-<div class="row">
-  <%= will_paginate @authors %>
-</div>
 
 <%= link_to "Novo autor", new_author_path, class: "btn btn-primary" %>
