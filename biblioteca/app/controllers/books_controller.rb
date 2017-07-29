@@ -1,6 +1,12 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all.paginate(page: params[:page], per_page: 10)
+    #@books = Book.all.paginate(page: params[:page], per_page: 10)
+    if params[:search].present?
+      @books = Book.where("title like '%#{params[:search]}%'")
+    else
+      @books = Book.all
+    end
+
   end
 
   def show

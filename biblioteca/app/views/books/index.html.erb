@@ -1,5 +1,18 @@
 <h1>Lista de Livros</h1>
 
+<%= form_tag books_path, method: :get do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Pesquisar" %>
+<% end %>
+
+<% if params[:search].present? %>
+  <div class="row">
+    <div class="alert alert-success">
+      <%= @books.size %> Resultados Encontrados.
+    </div>
+</div>
+<% end %>
+
 <table class="table table-striped">
   <tr>
     <th>Titulo</th>
