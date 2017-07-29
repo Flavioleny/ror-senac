@@ -10,21 +10,21 @@
 
 <%= form_for @book, html: {class: 'form-horizontal'} do |f| %>
   <div class="form-group">
-    <%= f.label :title, class: 'col-sm-3 control-label' %>
+    <%= f.label :title, "Titulo:", class: 'col-sm-3 control-label' %>
     <div class="col-sm-7">
       <%= f.text_field :title, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :publication_year, class: 'col-sm-3 control-label' %>
+    <%= f.label :publication_year, "Ano Publicação:", class: 'col-sm-3 control-label' %>
     <div class="col-sm-2">
       <%= f.text_field :publication_year, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :author_id, class: 'col-sm-3 control-label' %>
+    <%= f.label :author_id, "Autor:", class: 'col-sm-3 control-label' %>
     <div class="col-sm-2">
       <%= f.select :author_id, options_to_author, {prompt: "Selecione um Autor"} %>
     </div>

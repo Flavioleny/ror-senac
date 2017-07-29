@@ -5,6 +5,7 @@
     <th>Titulo</th>
     <th>Ano de Publicação</th>
     <th>Autor</th>
+    <th>Ações</th>
   </tr>
 
   <% @books.each do |book| %>
@@ -12,8 +13,9 @@
     <td><%= book.title %></td>
     <td><%= book.publication_year %></td>
     <td><%= link_to book.author.name, author_path(book.author.id) %></td>
-    <td><%= link_to "Editar", edit_book_path(book.id), class: 'btn btn-xs btn-primary' %></td>
-    <td><%= link_to "Deletar", book_path(book.id), class: 'btn btn-xs btn-primary', method: :delete, data: {confirm: "Voce realmente deseja apagar este autor?"} %></td>
+    <td><%= link_to "Detalhes", book_path(book.id), class: 'btn btn-xs btn-success' %>
+        <%= link_to "Editar", edit_book_path(book.id), class: 'btn btn-xs btn-primary' %>
+        <%= link_to "Deletar", book_path(book.id), class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: "Voce realmente deseja apagar este Livro?"} %></td>
   </tr>
   <% end %>
 </table>

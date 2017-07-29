@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   post 'books' => 'books#create'
   get 'book/new' => 'books#new', as: :new_book
   get 'book/:id/edit' => 'books#edit', as: :edit_book
-  patch 'book/:id' => 'books#update', as: :book
+  get 'book/:id' => 'books#show', as: :book
+  patch 'book/:id' => 'books#update'
   delete 'book/:id' => 'books#destroy'
 
   root to: "home#index"
