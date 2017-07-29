@@ -2,16 +2,10 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@authors = Author.paginate(page: params[:page], per_page: 5)
-    # Incluir no index no final depois de table
-    # <div class="row">
-    #   <%= will_paginate @authors %>
-    # </div>
-
     if params[:search].present?
-      @authors = Author.where("name like '%#{params[:search]}%'")
+      @authors = Author.where("name like '%#{params[:search]}%'").paginate(page: params[:page], per_page: 3)
     else
-      @authors = Author.all
+      @authors = Author.paginate(page: params[:page], per_page: 3)
     end
   end
 

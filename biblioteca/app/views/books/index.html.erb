@@ -43,4 +43,8 @@
   <% end %>
 </table>
 
+<div class="row">
+  <%= will_paginate @books %>
+</div>
+
 <%= link_to "Novo Livro", new_book_path, class: "btn btn-primary" %>
