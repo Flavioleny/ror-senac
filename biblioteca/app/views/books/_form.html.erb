@@ -32,8 +32,15 @@
 
   <div class="form-group">
     <%= f.label :resume, "Resumo:", class: 'col-sm-3 control-label' %>
-    <div class="col-sm-2">
+    <div class="col-sm-7">
       <%= f.text_area :resume, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :total_pages, "Total de Paginas:", class: 'col-sm-3 control-label' %>
+    <div class="col-sm-1">
+      <%= f.number_field :total_pages, class: "form-control" %>
     </div>
   </div>
 
