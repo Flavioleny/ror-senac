@@ -45,6 +45,14 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :cover, "Imagem da Capa:", class: 'col-sm-3 control-label' %>
+    <div class="col-sm-3">
+      <%= image_tag @book.cover.url %>
+      <%= f.file_field :cover, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-sm-12 col-sm-offset-3">
       <%= f.submit "Salvar", class: "btn btn-primary" %>
       <%= link_to "Voltar", books_path, class: "btn btn-default" %>

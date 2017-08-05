@@ -9,6 +9,7 @@ class Book < ApplicationRecord
 
   validates_presence_of :title, message: "Não pode ser vazio"
 
+  mount_uploader :cover, CoverUploader
   #  validates_length_of :title, in: 5..50,  message: "Deve possuir entre 5 a 50 caracteres"
   #  validate :primeira_letra_maiscula
 
