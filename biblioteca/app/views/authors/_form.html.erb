@@ -24,6 +24,14 @@
 </div>
 
 <div class="form-group">
+  <%= f.label :photo, "Foto do Autor:", class: 'col-sm-3 control-label' %>
+  <div class="col-sm-3">
+    <%= image_tag @author.photo.url %>
+    <%= f.file_field :photo, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
   <div class="col-sm-12">
     <%= f.submit "Salvar", class: "btn btn-primary" %>
     <%= link_to "Voltar", authors_path, class: "btn btn-default" %>

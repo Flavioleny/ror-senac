@@ -1,4 +1,4 @@
-class CoverUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
 
   #include RMagick or MiniMagick support:
   #include CarrierWave::RMagick
@@ -16,7 +16,7 @@ class CoverUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
    def default_url
-     "/default_book.png"
+     "/default_author.png"
    end
 
   # Process files as they are uploaded:
