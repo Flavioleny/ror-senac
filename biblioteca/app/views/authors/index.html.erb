@@ -49,5 +49,6 @@
 <div class="row">
   <%= will_paginate @authors %>
 </div>
-
-<%= link_to "Novo autor", new_author_path, class: "btn btn-primary" %>
+<% if can?(:authors, :new) %>
+  <%= link_to "Novo autor", new_author_path, class: "btn btn-primary" %>
+<% end %>

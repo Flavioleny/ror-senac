@@ -47,4 +47,6 @@
   <%= will_paginate @books %>
 </div>
 
-<%= link_to "Novo Livro", new_book_path, class: "btn btn-primary" %>
+<% if can?(:books, :new) %>
+  <%= link_to "Novo Livro", new_book_path, class: "btn btn-primary" %>
+<% end %>
