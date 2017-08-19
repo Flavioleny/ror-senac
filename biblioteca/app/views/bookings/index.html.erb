@@ -8,12 +8,21 @@
     <th>Ações</th>
   </tr>
 
-  <%= @bookings.each do |booking| %>
+  <% @bookings.each do |booking| %>
     <tr>
       <td><%= booking.book.title %></td>
       <td><%= booking.user.email %></td>
       <td><%= booking.reserved_to %></td>
+      <td><%= link_to "Detalhes", "#", class: 'btn btn-xs btn-success' %>
+          <%= link_to "Editar", "#", class: 'btn btn-xs btn-primary' %>
+          <%= link_to "Deletar", "#", class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: "Voce realmente deseja apagar esta Reserva?"} %>
+      </td>
     </tr>
   <% end %>
 
 </table>
+
+<div class="row">
+  <%= will_paginate @authors %>
+</div>
+<%= link_to "Nova Reserva", new_booking_path, class: "btn btn-primary" %>
