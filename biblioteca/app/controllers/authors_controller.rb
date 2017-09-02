@@ -4,9 +4,9 @@ class AuthorsController < ApplicationController
 
   def index
     if params[:search].present?
-      @authors = Author.where("name like '%#{params[:search]}%'").paginate(page: params[:page], per_page: 3)
+      @authors = Author.where("name like '%#{params[:search]}%'").paginate(page: params[:page], per_page: 5)
     else
-      @authors = Author.paginate(page: params[:page], per_page: 3)
+      @authors = Author.paginate(page: params[:page], per_page: 5)
     end
   end
 
@@ -39,12 +39,25 @@ class AuthorsController < ApplicationController
     end
   end
 
+  # def destroy
+  #   begin
+  #     @author.delete
+  #     redirect_to authors_path, notice: "Autor removido com sucesso"
+  #   rescue
+  #     redirect_to authors_path, notice: "Autor não pode ser removido"
+  #   end
+  # end
+
   def destroy
-    begin
-      @author.delete
-      redirect_to authors_path, notice: "Autor removido com sucesso"
-    rescue
-      redirect_to authors_path, notice: "Autor não pode ser removido"
+    respond_to do |format|
+      begin
+        @author.delete
+        format.html { redirect_to authors_path, notice: "Autor removido com sucesso" }
+        format.js
+      rescue
+        format.html { redirect_to authors_path, notice: "Autor não pode ser removido" }
+        format.js
+      end
     end
   end
 

@@ -45,11 +45,24 @@ class BooksController < ApplicationController
 
   end
 
-  def destroy
-    @book = Book.find(params[:id])
+  # def destroy
+  #   @book = Book.find(params[:id])
+  #
+  #   if @book.destroy
+  #     redirect_to books_path
+  #   end
+  # end
 
-    if @book.destroy
-      redirect_to books_path
+  def destroy
+    respond_to do |format|
+      begin
+        @book.delete
+        format.html { redirect_to authors_path, notice: "Livro removido com sucesso" }
+        format.js
+      rescue
+        format.html { redirect_to authors_path, notice: "Livro não pode ser removido" }
+        format.js
+      end
     end
   end
 

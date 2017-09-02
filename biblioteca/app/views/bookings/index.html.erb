@@ -23,6 +23,6 @@
 </table>
 
 <div class="row">
-  <%= will_paginate @authors %>
+  <%= will_paginate @bookings, renderer: BootstrapPagination::Rails %>
 </div>
 <%= link_to "Nova Reserva", new_booking_path, class: "btn btn-primary" %>

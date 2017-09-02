@@ -21,6 +21,8 @@
   <% end %>
 </div>
 
+<div class="alert" style="display: none"></div>
+
 <table class="table table-striped">
   <tr>
     <th>Id</th>
@@ -31,20 +33,20 @@
   </tr>
 
   <% @books.each do |book| %>
-  <tr>
+  <tr id="book-<%= book.id %>">
     <td><%= book.id %></td>
     <td><%= book.title %></td>
     <td><%= book.publication_year %></td>
     <td><%= link_to book.author.name, author_path(book.author.id) %></td>
     <td><%= link_to "Detalhes", book_path(book.id), class: 'btn btn-xs btn-success' %>
         <%= link_to "Editar", edit_book_path(book.id), class: 'btn btn-xs btn-primary' %>
-        <%= link_to "Deletar", book_path(book.id), class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: "Voce realmente deseja apagar este Livro?"} %></td>
+        <%= link_to "Deletar", book_path(book.id), class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: "Voce realmente deseja apagar este Livro?", remote: true } %></td>
   </tr>
   <% end %>
 </table>
 
 <div class="row">
-  <%= will_paginate @books %>
+  <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
 </div>
 
 <% if can?(:books, :new) %>
