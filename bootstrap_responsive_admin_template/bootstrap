@@ -1,0 +1,60 @@
+css
+font-awesome
+fonts
+img
+js
+plugins
+
+
+Instalar uma gem bootstrap
+gem 'adminlte--rails'
+bundle
+
+ou
+
+gem install adminlte-rails
+
+/home/flavio/senac_ruby/ror-senac/biblioteca/config/initializers/assets.rb
+
+
+Arquivo - assets.rb
+Rails.application.config.assets.precompile += %w( bootstrap.css font-awesome.css custom-styles.css )
+Rails.application.config.assets.precompile += %w( jquery-1.10.2.js bootstrap.min.js jquery.metisMenu.js custom-scripts.js )
+
+Arquivo - /views/layouts/application.html.erb
+<head>
+  <title>Biblioteca</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <%= csrf_meta_tags %>
+
+	<!-- Bootstrap Styles-->
+	<%= stylesheet_link_tag 'bootstrap.css', media: 'all' %>
+	<!-- FontAwesome Styles-->
+	<%= stylesheet_link_tag "font-awesome.css" %>
+	<!-- Custom Styles-->
+	<%= stylesheet_link_tag "custom-styles.css" %>
+	<!-- Google Fonts-->
+	
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!-- JS Scripts-->
+  <!-- jQuery Js -->
+  <%= javascript_include_tag "jquery-1.10.2.js" %>
+  <!-- Bootstrap Js -->
+  <%= javascript_include_tag "bootstrap.min.js" %>
+  <!-- Metis Menu Js -->
+  <%= javascript_include_tag "jquery.metisMenu.js" %>
+  <!-- Custom Js -->
+  <%= javascript_include_tag "custom-scripts.js" %>
+
+</head>
+
+
+
+
+
+
+
+
