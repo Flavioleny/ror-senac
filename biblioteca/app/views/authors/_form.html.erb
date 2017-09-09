@@ -10,7 +10,7 @@
 
 <%= simple_form_for @author, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
   <%= f.input :name %>
-  <%= f.input :birthdate, as: :calendar %>
+  <%= f.input :birthdate, as: :datepicker, require: false %>
   <%= image_tag @author.photo.url %>
   <%= f.input :photo, as: :file, wrapper: :horizontal_file_input %>
 
