@@ -8,28 +8,11 @@
 </ul>
 <% end %>
 
-<%= form_for @author, html: { class: 'form-horizontal' } do |f| %>
-<div class="form-group">
-  <%= f.label :name, "Nome:", class: "col-sm-3 control-label" %>
-  <div class="col-sm-9">
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :birthdate, "Data de nascimento:", class: "col-sm-3 control-label" %>
-  <div class="col-sm-2">
-    <%= f.date_field :birthdate, class: 'form-control' %>
-  </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :photo, "Foto do Autor:", class: 'col-sm-3 control-label' %>
-  <div class="col-sm-3">
-    <%= image_tag @author.photo.url %>
-    <%= f.file_field :photo, class: "form-control" %>
-  </div>
-</div>
+<%= simple_form_for @author, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+  <%= f.input :name %>
+  <%= f.input :birthdate, as: :calendar %>
+  <%= image_tag @author.photo.url %>
+  <%= f.input :photo, as: :file, wrapper: :horizontal_file_input %>
 
 <div class="form-group">
   <div class="col-sm-12 col-sm-offset-3">
