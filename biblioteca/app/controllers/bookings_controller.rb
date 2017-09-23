@@ -1,5 +1,11 @@
 class BookingsController < ApplicationController
   def index
+    # if params[:search].present?
+    #   @bookings = Booking.where("name like '%#{params[:search]}%'").paginate(page: params[:page], per_page: 3)
+    # else
+    #   @bookings = current_user.bookings.paginate(page: params[:page], per_page: 3)
+    # end
+
     if current_user.admin?
       @bookings = Booking.all.paginate(page: params[:page], per_page: 2)
     else
