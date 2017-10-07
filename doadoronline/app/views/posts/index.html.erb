@@ -1,0 +1,21 @@
+<h1>Posts</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Id</th>
+    <th>Titulo</th>
+    <th>Descrição</th>
+    <th>Ações</th>
+  </tr>
+
+  <% @posts.each do |post| %>
+  <tr id="post-<%= post.id %>">
+    <td><%= post.id %></td>
+    <td><%= post.titulo %></td>
+    <td><%= post.descricao %></td>
+    <td><%= link_to "Editar", edit_post_path(post.id), class: 'btn btn-xs btn-primary' %> </td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to "Novo Post", new_post_path, class: "btn btn-primary" %>

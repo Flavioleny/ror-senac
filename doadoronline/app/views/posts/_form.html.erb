@@ -1,0 +1,11 @@
+<%= simple_form_for @post, html: { class: 'form-horizontal' } do |f| %>
+  <%= f.input :titulo, label:"Título: " %>
+  <%= f.input :descricao, label:"Descrição: " %>
+
+  <div class="form-group">
+    <div class="col-sm-12 col-sm-offset-3">
+      <%= f.submit "Salvar", class: "btn btn-primary" %>
+      <%= link_to "Voltar", posts_path, class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
