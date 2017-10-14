@@ -1,21 +1,58 @@
-<h1>Posts</h1>
+<section class="content">
+  <div class="row">
+    <div class="col-md-8">
+      <section class="content-header">
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+          <li class="active">Post</li>
+        </ol>
+      </section>
 
-<table class="table table-striped">
-  <tr>
-    <th>Id</th>
-    <th>Titulo</th>
-    <th>Descrição</th>
-    <th>Ações</th>
-  </tr>
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Post</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal">
+          <div class="box-body">
 
-  <% @posts.each do |post| %>
-  <tr id="post-<%= post.id %>">
-    <td><%= post.id %></td>
-    <td><%= post.titulo %></td>
-    <td><%= post.descricao %></td>
-    <td><%= link_to "Editar", edit_post_path(post.id), class: 'btn btn-xs btn-primary' %> </td>
-  </tr>
-  <% end %>
-</table>
+            <table class="table table-striped">
+              <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Descrição</th>
+                <% if user_signed_in? %>
+                  <% if can?(:posts, :new) %>
+                    <th>Ações</th>
+                  <% end %>
+                <% end %>
+              </tr>
 
-<%= link_to "Novo Post", new_post_path, class: "btn btn-primary" %>
+              <% @posts.each do |post| %>
+              <tr id="post-<%= post.id %>">
+                <td><%= post.id %></td>
+                <td><%= post.titulo %></td>
+                <td><%= post.descricao %></td>
+                <% if user_signed_in? %>
+                  <% if can?(:posts, :new) %>
+                    <td><%= link_to "Editar", edit_post_path(post.id), class: 'btn btn-xs btn-primary' %></td>
+                    <td><%= link_to "Deletar", post_path(post.id), class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: "Voce realmente deseja apagar este Post?", remote: true } %></td>
+                  <% end %>
+                <% end %>
+              </tr>
+              <% end %>
+            </table>
+
+            <div class="box-footer">
+              <%= link_to "Novo Post", new_post_path, class: "btn btn-primary" %>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>

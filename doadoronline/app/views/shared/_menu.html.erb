@@ -15,7 +15,23 @@
       <ul class="nav navbar-nav">
         <li class="<%= active_home %>"><%= link_to "Home", root_path %></li>
         <li class="<%= active_posts %>"><%= link_to "Post", posts_path %></li>
+        <li class="<%= active_orders %>"><%= link_to "Pedido", orders_path %></li>
+        <li class="<%= active_contacts %>"><%= link_to "Contato", contacts_path %></li>
       </ul>
+
+      <ul class="nav navbar-nav pull-right">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Entrar", new_user_session_path %>
+          </li>
+        <% end %>
+
+      </ul>
+
     </div>
   </div>
 </nav>

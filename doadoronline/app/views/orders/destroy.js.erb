@@ -1,0 +1,17 @@
+<% if Order.exists?(@order.id) %>
+  $(".alert").html("Registro não pode ser removido");
+  $(".alert").addClass("alert-danger");
+  $('.alert').show();
+  setTimeout(function(){
+    $('.alert').hide();
+  }, 5000)
+<% else %>
+  $("#order-<%= @order.id %>").remove();
+
+  $(".alert").html("Registro removido com Sucesso");
+  $(".alert").addClass("alert-success");
+  $('.alert').show();
+  setTimeout(function(){
+    $('.alert').hide();
+  }, 5000)
+<% end %>

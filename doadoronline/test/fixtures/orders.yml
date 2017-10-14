@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  dtanascimento: 2017-10-08
+  telefone: MyString
+  email: MyString
+  dtaagendada: 2017-10-08
+  doador: MyString
+  tpsanguineo: MyString
+
+two:
+  nome: MyString
+  dtanascimento: 2017-10-08
+  telefone: MyString
+  email: MyString
+  dtaagendada: 2017-10-08
+  doador: MyString
+  tpsanguineo: MyString

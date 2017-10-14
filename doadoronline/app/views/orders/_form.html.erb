@@ -1,0 +1,40 @@
+<section class="content">
+  <div class="row">
+    <div class="col-md-8">
+      <section class="content-header">
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+          <li class="active">Pedido</li>
+        </ol>
+      </section>
+
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Dados do Pedido</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <div class="box-body">
+
+          <%= simple_form_for @order, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+            <%= f.input :nome, label:"Nome: " %>
+            <%= f.input :dtanascimento, as: :datepicker, require: true, label:"Dta Nascimento: " %>
+            <%= f.input :telefone, label:"Telefone: " %>
+            <%= f.input :email, label:"E-mail: " %>
+            <%= f.input :dtaagendada, as: :datepicker, require: true, label:"Dta Agendamento: " %>
+            <%= f.input :doador, label:"Doador[S/N]: " %>
+            <%= f.input :tpsanguineo, label:"Tp Sanguineo: " %>
+
+            <div class="box-footer">
+              <%= f.submit "Salvar", class: "btn btn-primary" %>
+              <%= link_to "Voltar", orders_path, class: "btn btn-default" %>
+            </div>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

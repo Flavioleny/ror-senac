@@ -1,11 +1,35 @@
-<%= simple_form_for @post, html: { class: 'form-horizontal' } do |f| %>
-  <%= f.input :titulo, label:"Título: " %>
-  <%= f.input :descricao, label:"Descrição: " %>
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <section class="content-header">
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+          <li class="active">Post</li>
+        </ol>
+      </section>
 
-  <div class="form-group">
-    <div class="col-sm-12 col-sm-offset-3">
-      <%= f.submit "Salvar", class: "btn btn-primary" %>
-      <%= link_to "Voltar", posts_path, class: "btn btn-default" %>
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Dados do Post</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <div class="box-body">
+
+          <%= simple_form_for @post, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+            <%= f.input :titulo, label:"Título: " %>
+            <%= f.input :descricao, label:"Descrição: " %>
+
+            <div class="box-footer">
+              <%= f.submit "Salvar", class: "btn btn-primary" %>
+              <%= link_to "Voltar", posts_path, class: "btn btn-default" %>
+            </div>
+          <% end %>
+
+        </div>
+
+      </div>
     </div>
   </div>
-<% end %>
+</section>

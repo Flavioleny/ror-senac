@@ -1,0 +1,69 @@
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <section class="content-header">
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+          <li class="active">Pedido</li>
+        </ol>
+      </section>
+
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Pedido</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal">
+          <div class="box-body">
+
+            <table class="table table-striped">
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Dta Nascimento</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+                <th>Dta Agendamento</th>
+                <th>Doador[S/N]</th>
+                <th>Tp Sanguineo</th>
+                <% if user_signed_in? %>
+                  <% if can?(:orders, :new) %>
+                    <th>Ações</th>
+                  <% end %>
+                <% end %>
+              </tr>
+
+              <% @orders.each do |order| %>
+                <tr id="order-<%= order.id %>">
+                  <td><%= order.id %></td>
+                  <td><%= order.nome  %></td>
+                  <td><%= order.dtanascimento %></td>
+                  <td><%= order.telefone %></td>
+                  <td><%= order.email %></td>
+                  <td><%= order.dtaagendada %></td>
+                  <td><%= order.doador %></td>
+                  <td><%= order.tpsanguineo %></td>
+                  <% if user_signed_in? %>                              
+                    <% if can?(:orders, :edit) %>
+                      <td><%= link_to "Editar", edit_order_path(order.id), class: 'btn btn-xs btn-primary' %> </td>
+                      <td><%= link_to "Deletar", order_path(order.id), class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: "Voce realmente deseja apagar este Pedido?", remote: true } %></td>
+                    <% end %>
+                  <% end %>
+                </tr>
+              <% end %>
+            </table>
+
+            <div class="box-footer">
+                <%= link_to "Novo Pedido", new_order_path, class: "btn btn-primary" %>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</section>
